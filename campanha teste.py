@@ -1,117 +1,84 @@
-bronze = 30
-prata = 60
-ouro = 120
-adamantium = 250
-apoiadores = 18
-valor = 2500
-cont = 0
-dinheiro = 0
-a = 0
-b = 0
-c = 0
-d = 0
-acont = 0
-bcont = 0
-ccont = 0
-dcont = 0
-ajuste = 0
+bronze = int(30)
+prata = int(60)
+ouro = int(120)
+adamantium = int(250)
+apoiadores = int(18)
+valor = int(2500)
+cont = int(0)
+dinheiro = int(0)
+a = int(0)
+b = int(0)
+c = int(0)
+d = int(0)
+avalor = int(0)
+bvalor = int(0)
+cvalor = int(0)
+dvalor = int(0)
+poss = int(0)
 
-while (cont != apoiadores) and (dinheiro != valor):
+#Abre o arquivo calculos.txt
+arq = open('calculos.txt', 'w' , encoding="utf8")
+
+while a != apoiadores and b != apoiadores and c != apoiadores and d != apoiadores :
     print('Iniciou Codigo')
-    while(cont < apoiadores) and (dinheiro < valor):
 
     #Calculo Bronze
-        if acont == 0:
-            while acont == 0 :
-                print('Entrou Bronze')
-                if (dinheiro > valor) :
-                    cont = cont - 1
-                    acont = 1
-                    a = a - 1
-                    dinheiro = dinheiro - bronze
-                    print('Bronze>Dinheiro')
-                if (cont > apoiadores):
-                    a = a - 1
-                    cont = cont - 1
-                    acont = 1
-                    dinheiro = dinheiro - bronze
-                    print('Bronze>Apoiadores')
-                else :
-                    cont = cont + 1
-                    a = a + 1
-                    dinheiro = dinheiro + bronze
-                    print('Bronze>Else')
-                print('Setor Bronze')
-                print('Cont=', cont)
-                print('Dinheiro=', dinheiro)
-                print('a=', a)
-                print('b=', b)
-                print('c=', c)
-                print('d=', d)
+    if a < apoiadores :
+        a = a + 1
+
+    if a == apoiadores :
+        a = 0
+        b = b + 1
 
     #Calculo Prata
+    if b == apoiadores :
+        b = 0
+        c = c + 1
 
-        if acont == 1:  #verifica se a classe anterior ja encheu
-            while bcont == 0 :
-                print('Entrou Prata')
-                if (dinheiro > valor) : #Se estrapolar o valor, é retirado 1 apoiador Bronze
-                    cont = cont - 1
-                    bcont = 1   #Ativa chave indicando que o dinheiro de Apoiadores Pratas ja encheu
-                    a = a - 1
-                    dinheiro = dinheiro - bronze
-                    print('Prata>Dinheiro')
-                if (cont > apoiadores):
-                    a = a - 1
-                    cont = cont - 1
-                    dinheiro = dinheiro - bronze
-                    print('Prata>Apoiadores')
-                else :
-                    cont = cont + 1
-                    b = b + 1
-                    dinheiro = dinheiro + prata
-                    print('Prata>Else')
+    #Calculo Ouro
+    if c == apoiadores :
+        c = 0
+        d = d + 1
 
-                print('Setor Prata')
-                print('Cont=', cont)
-                print('Dinheiro=', dinheiro)
-                print('a=', a)
-                print('b=', b)
-                print('c=', c)
-                print('d=', d)
+    #Equações
+    dinheiro = int((a*bronze)+(b*prata)+(c*ouro)+(d*adamantium))
+    cont = int(a+b+c+d)
 
-    # Calculo Ouro
+    #Verificação
 
-        if bcont == 1:  #verifica se a classe anterior ja encheu
-            while ccont == 0 :  #Verifica se a classe atual ainda não encheu
-                print('Entrou Ouro')
-                if (dinheiro > valor) : #Se estrapolar o valor, é retirado 1 apoiador Bronze
-                    cont = cont - 1
-                    ccont = 1   #Ativa chave indicando que o dinheiro de Apoiadores Ouro ja encheu
-                    a = a - 1
-                    dinheiro = dinheiro - bronze
-                    print('Ouro>Dinheiro')
-                if (cont > apoiadores):
-                    a = a - 1
-                    cont = cont - 1
-                    dinheiro = dinheiro - bronze
-                    print('Ouro>Apoiadores')
-                else :
-                    cont = cont + 1
-                    b = b + 1
-                    dinheiro = dinheiro + prata
-                    print('Ouro>Else')
-                print('Setor Ouro')
-                print('Cont=', cont)
-                print('Dinheiro=', dinheiro)
-                print('a=', a)
-                print('b=', b)
-                print('c=', c)
-                print('d=', d)
+    if dinheiro == valor and cont == apoiadores:
+        poss = poss + 1
+        avalor = int(a * bronze)
+        bvalor = int(b * prata)
+        cvalor = int(c * ouro)
+        dvalor = int(d * adamantium)
+        arq.write("%s %d\n" %('cont:', cont))
+        arq.write("%s %d\n" %('dinheiro:', dinheiro))
+        arq.write("%s %d %s %d\n" %('a:', a, '=', avalor))
+        arq.write("%s %d %s %d\n" %('b:', b, '=', bvalor))
+        arq.write("%s %d %s %d\n" %('c:', c, '=', cvalor))
+        arq.write("%s %d %s %d\n" %('d:', d, '=', dvalor))
+        arq.write("%s %d\n" %('possibilidade:', poss))
+        arq.write('==========\n')
 
-        print('Fim do Code')
-        print('Cont=',cont)
-        print('Dinheiro=',dinheiro)
-        print('a=',a)
-        print('b=',b)
-        print('c=',c)
-        print('d=',d)
+    #Mostra as variaveis e seus resultados
+    print('Fim do Loop')
+    print('Cont=',cont)
+    print('Dinheiro=',dinheiro)
+    print('a=',a)
+    print('b=',b)
+    print('c=',c)
+    print('d=',d)
+    print('Possibilidades=',poss)
+
+#Fecha o arquivo calculos.txt
+arq.close()
+if a == apoiadores and b == apoiadores and c == apoiadores and d == apoiadores :
+    print('Fim do Script')
+    print('Cont=', cont)
+    print('Dinheiro=', dinheiro)
+    print('a=', a)
+    print('b=', b)
+    print('c=', c)
+    print('d=', d)
+    print('Possibilidades=', poss)
