@@ -5,15 +5,21 @@ d = Adamantium = 250
 
 Apoiadores = 554
 Valor = 36.890
+====================
+[10/05/2017 16:44]
+
+588 apoiadores
+R$ 38.820,00
 
 ====================
 
 Teste
+Apoiadores | Valor | Total
 
-a=3	90
-b=5	300
-c=3	360
-d=7	1750
+a=3		30 |	90|
+b=5		60 |	300|
+c=3		120|	360|
+d=7		250|	1750
 
 total	2500
 apoiadores 18
