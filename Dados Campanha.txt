@@ -1,0 +1,19 @@
+a = Bronze = 30
+b = Prata = 60
+c = Ouro = 120
+d = Adamantium = 250
+
+Apoiadores = 554
+Valor = 36.890
+
+====================
+
+Teste
+
+a=3	90
+b=5	300
+c=3	360
+d=7	1750
+
+total	2500
+apoiadores 18
